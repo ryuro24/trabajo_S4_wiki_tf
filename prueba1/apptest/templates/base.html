@@ -29,18 +29,24 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'forowiki' %}">Foro</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://www.google.com/maps/place/R%C3%ADo+Imperial+460,+Valle+Grande,+Lampa,+Regi%C3%B3n+Metropolitana/@-33.3295809,-70.751195,17z/data=!3m1!4b1!4m5!3m4!1s0x9662bf62531dc747:0xc0b4aee73c3b9373!8m2!3d-33.3295854!4d-70.7490063?hl=es-CL">Dirección</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{% url 'registrarse_wiki' %}">Registrarse</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'inicio_sesion_wiki' %}">Iniciar sesion</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'micuentatf' %}">Mi Cuenta</a>
-                </li>
+{% if request.session.usuario_email %}
+        <!-- Si el usuario inició sesión -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'micuentatf' %}">Mi Cuenta</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
+        </li>
+        {% else %}
+        <!-- Si NO ha iniciado sesión -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'registrarse_wiki' %}">Registrarse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'inicio_sesion_wiki' %}">Iniciar sesión</a>
+        </li>
+        {% endif %}
+
             </ul>
             <form class="d-flex" id="separarsearch" >
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

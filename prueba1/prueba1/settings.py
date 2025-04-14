@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
+import oracledb
+oracledb.init_oracle_client(lib_dir=r"D:\oracle\instantclient_23_7")
 
 from pathlib import Path
 
@@ -78,8 +80,12 @@ WSGI_APPLICATION = 'prueba1.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': '',  # No SID is required here, we leave it empty
+        'USER': 'C##MDY2131_ET_FA_DES',
+        'PASSWORD': '12345',
+        'HOST': 'localhost:1521/orcl',  # The host, port, and service name all in one string
+        'PORT': '',  # No need to specify the port separately
     }
 }
 

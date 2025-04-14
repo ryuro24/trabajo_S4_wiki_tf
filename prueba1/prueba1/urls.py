@@ -33,6 +33,7 @@ urlpatterns = [
     path('Consumibles/', views.Consumibles, name='Consumibles'),
     path('historia/', views.historia, name='historia'),
     path('Logros/', views.Logros, name='Logros'),
+    path('cerrar_sesion/', views.cerrar_sesion, name='cerrar_sesion'),
 
     path('admin/', admin.site.urls),
 ]
